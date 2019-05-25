@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World Nodejs Docker');
+    res.send('Hello World Nodejs Docker :' + process.env.SERVICE_NAME);
 })
 
 app.post('/event', (req, res) => {	
