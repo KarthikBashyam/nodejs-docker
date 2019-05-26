@@ -18,6 +18,11 @@ app.post('/event', (req, res) => {
 	res.json('Ok');
 });
 
+app.post('/', (req, res) => {	
+	console.log('EVENT RECEIVED :'+ req.body);
+	res.json('Ok');
+});
+
 app.listen(app.get('port'), () => {
     console.log('Express server started on port :' + app.get('port'));
 });
