@@ -1,0 +1,22 @@
+name: build-and-push
+
+on: 
+  pull_request:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    name : Build
+    runs-on: ubuntu-latest    
+    steps:
+    - uses: actions/checkout@master
+    - name: Build Docker Image
+      run: docker build -t docker.pkg.github.com/KarthikBashyam/hello-world-nodejs:latest
+    - name: Push the image 
+      run: |
+        docker login docker.pkg.github.com -u test -p "${GITHUB_PACKAGE_REGISTRY_TOKEN}"
+        docker push docker.pkg.github.com -u test -p "${GITHUB_PACKAGE_REGISTRY_TOKEN}"
+      env: 
+        GITHUB_PACKAGE_REGISTRY_TOKEN : ${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN}}
