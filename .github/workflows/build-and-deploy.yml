@@ -17,6 +17,6 @@ jobs:
     - name: Push the image 
       run: |
         docker login docker.pkg.github.com -u test -p "${GITHUB_PACKAGE_REGISTRY_TOKEN}"
-        docker push docker.pkg.github.com -u test -p "${GITHUB_PACKAGE_REGISTRY_TOKEN}"
+        docker push docker.pkg.github.com
       env: 
         GITHUB_PACKAGE_REGISTRY_TOKEN : ${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN}}
