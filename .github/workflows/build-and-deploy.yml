@@ -13,10 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build Docker Image
-      run: docker build -t docker.pkg.github.com/bashdocker/nodejs-helloworld/hello-world-nodejs:latest .
+      run: docker build -t docker.pkg.github.com/KarthikBashyam/nodejs-docker/app:1.0.
     - name: Push the image 
       run: |
         docker login docker.pkg.github.com -u test -p "${GITHUB_PACKAGE_REGISTRY_TOKEN}"
-        docker push docker.pkg.github.com/bashdocker/nodejs-helloworld/hello-world-nodejs:latest
+        docker push docker.pkg.github.com/KarthikBashyam/nodejs-docker/app:1.0
       env: 
         GITHUB_PACKAGE_REGISTRY_TOKEN : ${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN}}
